@@ -9,13 +9,14 @@ using UnityEditor;
 
 public class MenuUIHandler : MonoBehaviour
 {
+    // Method for loading scene by it index
     public void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
     }
 
 
-
+    // Exit from the game
     public void Exit()
     {
 #if UNITY_EDITOR

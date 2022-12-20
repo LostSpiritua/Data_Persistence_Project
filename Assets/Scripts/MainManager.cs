@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public GameObject GameOverPanel;
+    public GameObject BestPlayer;
     
     private bool m_Started = false;
     private int m_Points;
@@ -37,6 +39,8 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+
+        BestPlayer.GetComponent<Text>().text = "Best Score : " + GameManager.Instance.GetBestPlayer();
     }
 
     private void Update()
@@ -73,6 +77,10 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverPanel.SetActive(true);
+
+        // Put score of current game session to best score list and save game data to file when Game Over
+        GameManager.Instance.lastPlayerName = GameManager.Instance.playerName;
         GameManager.Instance.PutScoreToBestList(GameManager.Instance.playerName, m_Points);
+        GameManager.Instance.SaveDataToFile();
     }
 }

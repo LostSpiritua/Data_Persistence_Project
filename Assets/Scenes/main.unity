@@ -544,6 +544,7 @@ MonoBehaviour:
   Ball: {fileID: 177912862}
   ScoreText: {fileID: 188020406}
   GameOverPanel: {fileID: 1588128129}
+  BestPlayer: {fileID: 2078529054}
 --- !u!1 &455529321
 GameObject:
   m_ObjectHideFlags: 0
